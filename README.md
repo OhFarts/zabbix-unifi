@@ -1,5 +1,8 @@
 # zabbix-unifi
 Zabbix Template to monitor UniFi Controller via web API. No additional libraries or scripts required.
+{$UNIFI_PORT} Isn't really needed as we just use HTTPS (443)
+I would recommend to set timeout to 6s
+
 ## Usage
 - create a readonly user on unifi controller
 - create host with unifi controller IP
