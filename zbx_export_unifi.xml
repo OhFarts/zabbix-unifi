@@ -41,9 +41,9 @@ user = obj.user;
 password = obj.password;
 
 var response, login = new HttpRequest();
-login.addHeader('Content-Type: application/x-www-form-urlencoded');
+login.addHeader('Content-Type: application/json');
 response = login.post(
-  'https://'+host+':'+port+'/api/login',
+  'https://'+host+'/api/auth/login',
   '{&quot;username&quot;: &quot;'+user+'&quot;, &quot;password&quot;: &quot;'+password+'&quot;}'
 );
 
@@ -51,7 +51,7 @@ if (login.getStatus() !== 200) {
   throw 'Login failed with status code ' + login.getStatus() + ': ' + response;
 }
 try {
-  response = login.get('https://'+host+':'+port+'/api/stat/sites');
+  response = login.get('https://'+host+':'+port+'/proxy/network/api/stat/sites');
   response = JSON.parse(response);
 }
 catch (error) {
